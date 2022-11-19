@@ -1,21 +1,25 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { LoginPage } from '../auth'
-import { DcPage, MarvelPage } from '../heroes'
-import { Navbar } from '../ui/'
+import { HeroesRoutes } from '../heroes'
 
-Navbar
+
 export const AppRouter = () => {
     return (
         <>
-            <Navbar />
             <Routes>
-                <Route path="/" element={<Navigate to='/dc' />} />
-                <Route path="*" element={<Navigate to='/login' />} />
-                <Route path="dc" element={<DcPage />} />
-                <Route path="marvel" element={<MarvelPage />} />
                 <Route path="login" element={<LoginPage />} />
+                <Route path="/*" element={<HeroesRoutes />} />
             </Routes>
         </>
     )
 }
+
+/**
+|--------------------------------------------------
+| aca serian las rutas donde empieza todo
+| si estamos en login , renderiza el componente Login
+| si mandamos cualquier otra cosa despues de / mandamos a las rutas de los Heroes
+|
+|--------------------------------------------------
+*/
