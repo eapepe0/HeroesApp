@@ -8,9 +8,12 @@ export const LoginPage = () => {
     const { login } = useContext(AuthContext)
     const history = useNavigate();
 
-    const onLogin = () => {
+    const onLogin = () => { // al loguearnos
+        // sacamos del localStorage el lastPath si existe sino el lastPath es '/'
+        const lastPath = localStorage.getItem('lastPath') || '/';
         login('Coloso')
-        history("/", { replace: true });
+
+        history(lastPath, { replace: true }); // enviamos al lastPath
     };
     return (
         <>
