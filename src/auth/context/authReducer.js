@@ -1,15 +1,20 @@
 import { types } from "../types/types";
 
 export const authReducer = (state, action) => {
-  switch (action.type) {
-    case types.login:
+  // creamos un reducer
+  switch (
+    action.type // si la accion es ...
+  ) {
+    case types.login: // login
       return {
+        // devolvemos el state , el logged en verdadero y el usuario
         ...state,
         logged: true,
-        name: action.payload,
+        user: action.payload,
       };
-    case types.logout:
+    case types.logout: // en caso de logout
       return {
+        // devolvemos logged en falso
         logged: false,
       };
 

@@ -1,11 +1,17 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../auth/context/AuthContext";
 
 
 
 
 export const Navbar = () => {
     const navigate = useNavigate()
+
+    const { user, logout } = useContext(AuthContext);
+
     const onLogout = () => {
+        logout(); // borramos el usuario
         navigate('/login', { replace: true })
     }
     return (
@@ -32,12 +38,9 @@ export const Navbar = () => {
             <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto mx-2">
                     <span className="nav-item nav-link text-primary">
-                        Cristian
+                        {user?.name} {/* el signo de interrogacion dice que si es nulo no siga , pero si tiene algun valor que lo muestre */}
                     </span>
                     <button className="nav-item nav-link btn btn-outline-primary" onClick={onLogout}>Logout</button>
-                    {/*  <NavLink className={({ isActive }) => ` nav-item nav-link ${isActive ? 'active' : ''}`} to="/login">
-                        Logout
-                    </NavLink> */}
                 </ul>
             </div>
         </nav>
