@@ -34,7 +34,7 @@ export const SearchPage = () => {
             <div className="col-5">
                 <h4>Busqueda</h4>
                 <hr />
-                <form onSubmit={onSeachSubmit}>
+                <form onSubmit={onSeachSubmit} aria-label='form'>
                     <input type="text" name="searchText" id="" autoComplete="off" placeholder="Busca un heroe" className="form-control mb-3" value={searchText} onChange={onInputChange} />
                     <button className="btn btn-outline-primary">Buscar</button>
                 </form>
